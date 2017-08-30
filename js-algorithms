@@ -15,3 +15,73 @@ function fizzBuzz(num) {
 }
 
 fizzBuzz(20);
+
+
+
+//second algorithm: harmless ransom note
+
+// time complexity and big O notation
+big O helps classify how scalable an algorithm is
+estimate the worst case runtime - how long it takes the alg to complete based on input size
+informs us how much slower an algorithm will run if its input size grows
+
+the runtime will be constant for say an algorithm that takes an array and only prints the first two elements:
+we say its big O notation is "0 (1)" --- constant
+the number of operations we perform never changes 
+
+what about a function that takes an array and logs out all elements in that array?
+we have to do an operation of every element in the array now
+run time will increase proportionally to how much our input increases
+so we call it linear runtime: "O (n)" --- oh of n
+
+exponential run time: "O (n^2)"
+what about a function that takes an array and then prints out all possible pairs from that array?
+the output will get exponentially larger the bigger the array input is
+THIS IS NOT A VERY EFFICIENT ALGORITHM TYPE. CAN SLOW DOWN AN APPLICATION
+
+logarithmic runtime: "O (log n)"
+one example is binary search. two inputs: one list that needs to be sorted, and one input that we're searching for within the first input
+only going to end up looking at a fraction of the input that we're searching for
+like looking up a word in the dictionary "house"
+open dictionary to middle M section. you can ignore the second half of the dictionary. cut that in half again and again and eventually you'll get to the H section
+an input with 4,000 elements it would only take about 12 operations to find what we're looking for. 
+THIS ONE IS SUPER EFFICIENT.
+
+function harmlessRansomNote(note, clippings) {
+
+  //splits strings into arrays of individual words:
+  var noteArray = note.split(' ')
+  var clippingsArray = clippings.split(' ');
+
+  //for testing purposes:
+  console.log(noteArray);
+  console.log(clippingsArray);
+
+  var clippingsObject = {};
+
+  //puts all words in the clippings array into a usable object
+  clippingsArray.forEach(function(word) {
+    if(!clippingsObject[word]) clippingsObject[word] = 0; 
+    clippingsObject[word]++;
+  });
+
+
+  //for testing purposes:
+  console.log(clippingsObject);
+
+  var noteIsPossible = true;
+  noteArray.forEach(function(word) {
+    if (clippingsObject[word]) {
+      clippingsObject[word]--;
+      if (clippingsObject[word] < 0) noteIsPossible = false;
+    }
+    else noteIsPossible = false;
+  });
+
+  return noteIsPossible;
+
+}
+
+harmlessRansomNote("this is a test", "this is also a test for the second input");
+
+
