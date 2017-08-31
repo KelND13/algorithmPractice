@@ -27,7 +27,7 @@ informs us how much slower an algorithm will run if its input size grows
 
 the runtime will be constant for say an algorithm that takes an array and only prints the first two elements:
 we say its big O notation is "0 (1)" --- constant
-the number of operations we perform never changes 
+the number of operations we perform never changes
 
 what about a function that takes an array and logs out all elements in that array?
 we have to do an operation of every element in the array now
@@ -44,7 +44,7 @@ one example is binary search. two inputs: one list that needs to be sorted, and 
 only going to end up looking at a fraction of the input that we're searching for
 like looking up a word in the dictionary "house"
 open dictionary to middle M section. you can ignore the second half of the dictionary. cut that in half again and again and eventually you'll get to the H section
-an input with 4,000 elements it would only take about 12 operations to find what we're looking for. 
+an input with 4,000 elements it would only take about 12 operations to find what we're looking for.
 THIS ONE IS SUPER EFFICIENT.
 
 function harmlessRansomNote(note, clippings) {
@@ -61,7 +61,7 @@ function harmlessRansomNote(note, clippings) {
 
   //puts all words in the clippings array into a usable object
   clippingsArray.forEach(function(word) {
-    if(!clippingsObject[word]) clippingsObject[word] = 0; 
+    if(!clippingsObject[word]) clippingsObject[word] = 0;
     clippingsObject[word]++;
   });
 
@@ -83,5 +83,32 @@ function harmlessRansomNote(note, clippings) {
 }
 
 harmlessRansomNote("this is a test", "this is also a test for the second input");
+
+
+// algorithm three! palindromes
+
+function isPalindrome(string) {
+  string = string.toLowerCase();
+  var letterArray = string.split('');
+  var validObject = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+  var onlyLettersArray = [];
+  letterArray.forEach(function(letter) {
+    //create an array of just letters, no special characters
+    if (validObject.indexOf(letter) > -1) onlyLettersArray.push(letter);
+  });
+
+
+  if (onlyLettersArray.join('') === onlyLettersArray.reverse().join('')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+isPalindrome("testing this function");
+
+isPalindrome("madam I'm adam");
+
 
 
