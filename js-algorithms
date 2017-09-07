@@ -84,6 +84,79 @@ function harmlessRansomNote(note, clippings) {
 
 harmlessRansomNote("this is a test", "this is also a test for the second input");
 
+//this one has linear time  complexity: "O (m + n)" or just "O (n)"
+
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Practicing:
+
+//1. Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contains any char.
+
+// Examples input/output:
+
+function XO(str) {
+    //code here
+    var xs = 0;
+    var os = 0;
+  
+    var lower = str.toLowerCase();
+    var array = lower.split("");
+    
+    var x = "x";
+    var o = "o";
+    
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] == x) {
+        xs++;
+      } else if (array[i] == o) {
+        os++;
+      } else {
+      }
+    }
+  
+  
+    if (xs === os) {
+      return true;
+    } else {
+      return false;
+    }
+}
+
+
+//should return false:
+XO("xotest");
+
+
+//2. Simple, given a string of words, return the length of the shortest word(s). String will never be empty and you do not need to account for different data //types.
+
+function findShort(s){
+
+//split string into array of words:
+var words = s.split(" "); 
+
+//assign the first word as the shortest, and prepare to compare it to the other words in the array
+var shortest = words[0];
+
+// if the worst word is longer than the next word, replace the shortest word
+for (var i = 0; i < words.length; i++) {
+  if(shortest.length > words[i].length) {
+    shortest = words[i];
+  }
+}
+
+return shortest.length; 
+}
+
+findShort("this is a test for the function");
 
 // algorithm three! palindromes
 
